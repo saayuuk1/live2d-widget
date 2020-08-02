@@ -3,6 +3,98 @@
  * https://github.com/stevenjoezhang/live2d-widget
  */
 
+/*function getScore() {
+	new Promise(function (resolve, reject) {
+		var url = location.href;
+		location.assign('http://bkjw.whu.edu.cn/servlet/Svlt_QueryStuScore?year=0&term=&learnType=&scoreFlag=0');
+		resolve(url);
+	}).then($(function (url) {
+		var
+			tr = $('tr'),
+			str,
+			list = [],
+			re = /<!-- 成绩 -->([\s\S]*?)<td>([\s\S]*?)<\/td>/;
+		if (!tr) {
+			return;
+		}
+		for (i = 1; i < tr.length; i++) {
+			str = re.exec(tr[i].innerHTML);
+			if (str && str[2]) {
+				list.push(parseFloat(str[2]));
+			}
+		}
+		alert(list);
+		console.log(url);
+	}));
+	//return list;
+}*/
+
+function analysePointfromScore(score) {
+	if (score >= 90.0) {
+		return 4.0;
+	} else if (score >= 85.0) {
+		return 3.7;
+	} else if (score >= 82.0) {
+		return 3.3;
+	} else if (score >= 78.0) {
+		return 3.0;
+	} else if (score >= 75.0) {
+		return 2.7;
+	} else if (score >= 72.0) {
+		return 2.3;
+	} else if (score >= 68.0) {
+		return 2.0;
+	} else if (score >= 64.0) {
+		return 1.5;
+	} else if (score >= 60.0) {
+		return 1.0;
+	} else {
+		return 0.0;
+	}
+}
+
+function getGPA() {
+	var jqxhr = $.ajax('/servlet/Svlt_QueryStuScore?year=0&term=&learnType=&scoreFlag=0').done(function (data) {
+		var
+			i,
+			re = /<tr null>([\s\S]*?)<\/tr>/g,
+			str,
+			re_score = /<!-- 成绩 -->([\s\S]*?)<td>([\s\S]*?)<\/td>/,
+			re_credit = /<!-- 学分 -->([\s\S]*?)<td>([\s\S]*?)<\/td>/,
+			str_s,
+			point,
+			credit,
+			total_point = 0.0,
+			total_credit = 0.0;
+		while (true) {
+			str = re.exec(data);
+			if (!str) {
+				break;
+			} else {
+				str_s = re_score.exec(str);
+				if (!str_s || !str_s[2]) {
+					continue;
+				} else {
+					point = analysePointfromScore(parseFloat(str_s[2]));
+				}
+				str_s = re_credit.exec(str);
+				if (!str_s || !str_s[2]) {
+					continue;
+				} else {
+					credit = parseFloat(str_s[2]);
+				}
+				total_point += point * credit;
+				total_credit += credit;
+			}
+		}
+		alert(total_point / total_credit);
+    }).fail(function (xhr, status) {
+
+    }).always(function () {
+
+    });
+}
+
 function loadWidget(config) {
 	let { waifuPath, apiPath, cdnPath } = config;
 	let useCDN = false, modelList;
@@ -60,14 +152,15 @@ function loadWidget(config) {
 	(function registerEventListener() {
 		document.querySelector("#waifu-tool .fa-comment").addEventListener("click", showHitokoto);
 		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {
-			if (window.Asteroids) {
+			/*if (window.Asteroids) {
 				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
 				window.ASTEROIDSPLAYERS.push(new Asteroids());
 			} else {
 				const script = document.createElement("script");
 				script.src = "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
 				document.head.appendChild(script);
-			}
+			}*/
+			getGPA();
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", loadRandModel);
