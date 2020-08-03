@@ -89,10 +89,76 @@ function getGPA() {
 		}
 		alert(total_point / total_credit);
     }).fail(function (xhr, status) {
-
+		alert(0);
     }).always(function () {
+		alert(1);
+	});
+}
 
-    });
+$(function beautifyIndex(url = 'https://pic4.zhimg.com/v2-d6a6db9d5db45618fb67536920c50c10_r.jpg', opacity = '0.8') {
+	//背景图片URL
+	url = 'url(' + url + ')';
+	//关闭二维码页面
+	$('.keifu_close').click();
+	//设置背景图片
+	var
+		width = $('#container').css('width'),
+		height = $('#main_contaier').css('height');
+	$('#footer').css('height', '0px');
+	$('#main_contaier').css('width', width);
+	$('#container').css('height', height);
+    $('#main_contaier').css('height', '880px');
+	$('#main_contaier').css('background-image', url);
+	//设置框架透明度
+    $('#page_iframe').css('opacity', opacity);
+	$('#bar_iframe').css('opacity', opacity);
+	//将选项置于框架前
+	$('#btn1').css('z-index', '1');
+	$('#btn2').css('z-index', '1');
+	$('#btn3').css('z-index', '1');
+	$('#btn5').css('z-index', '1');
+	$('#btn9').css('z-index', '1');
+});
+
+$(function beautifySubmit() {
+	$('#background-submit').click(function () {
+		var url = $('#background-url');
+		var opacity = $('#background-opacity');
+		beautifyIndex(url[0].value, opacity[0].value);
+		$('#background-config').remove();
+	})
+});
+
+function beautifyConfig() {
+	//自定义界面设置
+	$('#top').append('<form id="background-config">\
+	<input type="text" id="background-url" placeholder="请输入图片链接" style="position:absolute;left:600px;top:100px"/>\
+	<input type="text" id="background-opacity" placeholder="请输入透明度(0~1)" style="position:absolute;left:800px;top:100px"/>\
+	<input type="button" id="background-submit" value="确认" style="width:45px;position:absolute;left:1000px;top:102px;text-align:justify;"/>\
+		<style>\
+			input{\
+				font-size:12px;\
+				height:30px;\
+				border-radius:4px;\
+				border:1px solid #c8cccf;\
+				color:#986655;\
+				outline:0;\
+				text-align:left;\
+				padding-left: 10px;\
+				display:block;\
+				cursor: pointer;\
+				box-shadow: 2px 2px 5px 1px #ccc;z-index: 1;\
+				}\
+			input::-webkit-input-placeholder{\
+				color:#986655;\
+				font-size: 12px;\
+			}\
+		</style>');
+}
+
+function beautify() {
+	//beautifyIndex();
+	beautifyConfig();
 }
 
 function loadWidget(config) {
@@ -163,7 +229,9 @@ function loadWidget(config) {
 			getGPA();
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
-		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", loadRandModel);
+		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {
+			beautify();
+		});
 		document.querySelector("#waifu-tool .fa-camera-retro").addEventListener("click", () => {
 			showMessage("照好了嘛，是不是很可爱呢？", 6000, 9);
 			Live2D.captureName = "photo.png";
