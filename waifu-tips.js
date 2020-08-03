@@ -95,7 +95,7 @@ function getGPA() {
 	});
 }
 
-$(function beautifyIndex(url = 'https://pic4.zhimg.com/v2-d6a6db9d5db45618fb67536920c50c10_r.jpg', opacity = '0.8') {
+$(function beautifyIndex(url, opacity) {
 	//背景图片URL
 	url = 'url(' + url + ')';
 	//关闭二维码页面
@@ -124,7 +124,7 @@ $(function beautifySubmit() {
 	$('#background-submit').click(function () {
 		var url = $('#background-url');
 		var opacity = $('#background-opacity');
-		beautifyIndex(url[0].value, opacity[0].value);
+		beautifyIndex(url[0].value || 'https://pic4.zhimg.com/v2-d6a6db9d5db45618fb67536920c50c10_r.jpg', opacity[0].value || '0.8');
 		$('#background-config').remove();
 	})
 });
