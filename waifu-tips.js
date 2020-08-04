@@ -110,35 +110,36 @@ function getConfig() {
 	$('#top').append('<form class="iconColor">\
 		<input id="color-input-orange-0" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-0" style="position:absolute;left:600px;top:100px">公共基础必修</label>\
+		<label for="color-input-orange-0" style="position:absolute;left:600px;top:20px">公共基础必修</label>\
 		<input id="color-input-orange-1" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-1" style="position:absolute;left:600px;top:150px">公共基础选修</label>\
+		<label for="color-input-orange-1" style="position:absolute;left:600px;top:70px">公共基础选修</label>\
 		<input id="color-input-orange-2" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-2" style="position:absolute;left:720px;top:100px">通识教育必修</label>\
+		<label for="color-input-orange-2" style="position:absolute;left:720px;top:20px">通识教育必修</label>\
 		<input id="color-input-orange-3" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-3" style="position:absolute;left:720px;top:150px">通识教育选修</label>\
+		<label for="color-input-orange-3" style="position:absolute;left:720px;top:70px">通识教育选修</label>\
 		<input id="color-input-orange-4" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-4" style="position:absolute;left:840px;top:100px">专业教育必修</label>\
+		<label for="color-input-orange-4" style="position:absolute;left:840px;top:20px">专业教育必修</label>\
 		<input id="color-input-orange-5" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-5" style="position:absolute;left:840px;top:150px">专业教育选修</label>\
+		<label for="color-input-orange-5" style="position:absolute;left:840px;top:70px">专业教育选修</label>\
 		<input id="color-input-orange-6" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-6" style="position:absolute;left:960px;top:100px">公共必修</label>\
+		<label for="color-input-orange-6" style="position:absolute;left:960px;top:20px">公共必修</label>\
 		<input id="color-input-orange-7" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-7" style="position:absolute;left:960px;top:150px">公共选修</label>\
+		<label for="color-input-orange-7" style="position:absolute;left:960px;top:70px">公共选修</label>\
 		<input id="color-input-orange-8" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-8" style="position:absolute;left:1050px;top:100px">专业必修</label>\
+		<label for="color-input-orange-8" style="position:absolute;left:1050px;top:20px">专业必修</label>\
 		<input id="color-input-orange-9" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
-		<label for="color-input-orange-9" style="position:absolute;left:1050px;top:150px">专业选修</label>\
-		<input type="button" id="selectAll" value="全不选" style="position:absolute;left:1140px;top:100px;text-align:justify;"/>\
+		<label for="color-input-orange-9" style="position:absolute;left:1050px;top:70px">专业选修</label>\
+		<input type="button" id="selectAll" value="全不选" style="position:absolute;left:1140px;top:20px;text-align:justify;"/>\
+		<input type="button" id="orange-submit" value="确认" style="padding-left:15px;position:absolute;left:1140px;top:70px;text-align:justify;"/>\
 		<style>\
 			input{\
 				font-size:12px;\
