@@ -53,18 +53,20 @@ function analysePointfromScore(score) {
 	}
 }
 
-async function getGPA() {
+async function getGPA(list) {
 	var GPA = 4.0;
 	await $.ajax('/servlet/Svlt_QueryStuScore?year=0&term=&learnType=&scoreFlag=0').done(function (data) {
 		var
-			i,
 			re = /<tr null>([\s\S]*?)<\/tr>/g,
 			str,
+			dic = {'公共基础必修': 0, '公共基础选修': 1, '通识教育必修': 2, '通识教育选修': 3, '专业教育必修': 4, '专业教育选修': 5, '公共必修': 6, '公共选修': 7, '专业必修': 8, '专业选修': 9};
 			re_score = /<!-- 成绩 -->([\s\S]*?)<td>([\s\S]*?)<\/td>/,
 			re_credit = /<!-- 学分 -->([\s\S]*?)<td>([\s\S]*?)<\/td>/,
+			re_type = /<span([\s\S]*?)">([\s\S]*?)<\/span>/,
 			str_s,
 			point,
 			credit,
+			type,
 			total_point = 0.0,
 			total_credit = 0.0;
 		while (true) {
@@ -72,6 +74,12 @@ async function getGPA() {
 			if (!str) {
 				break;
 			} else {
+				type = re_type.exec(str);
+				if (!type || !type[2]) {
+					continue;
+				} else if (!list[dic[type[2]]]) {
+					continue;
+				}
 				str_s = re_score.exec(str);
 				if (!str_s || !str_s[2]) {
 					continue;
@@ -97,7 +105,106 @@ async function getGPA() {
 	return GPA;
 }
 
-$(function beautifyIndex(url, opacity) {
+function getConfig() {
+	$('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/saayuuk1/live2d-widget@0.9.2/styles.css">');
+	$('#top').append('<form class="iconColor">\
+		<input id="color-input-orange-0" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-0" style="position:absolute;left:600px;top:100px">公共基础必修</label>\
+		<input id="color-input-orange-1" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-1" style="position:absolute;left:600px;top:150px">公共基础选修</label>\
+		<input id="color-input-orange-2" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-2" style="position:absolute;left:720px;top:100px">通识教育必修</label>\
+		<input id="color-input-orange-3" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-3" style="position:absolute;left:720px;top:150px">通识教育选修</label>\
+		<input id="color-input-orange-4" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-4" style="position:absolute;left:840px;top:100px">专业教育必修</label>\
+		<input id="color-input-orange-5" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-5" style="position:absolute;left:840px;top:150px">专业教育选修</label>\
+		<input id="color-input-orange-6" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-6" style="position:absolute;left:960px;top:100px">公共必修</label>\
+		<input id="color-input-orange-7" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-7" style="position:absolute;left:960px;top:150px">公共选修</label>\
+		<input id="color-input-orange-8" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-8" style="position:absolute;left:1050px;top:100px">专业必修</label>\
+		<input id="color-input-orange-9" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
+			value="#ea9836" checked="true"/>\
+		<label for="color-input-orange-9" style="position:absolute;left:1050px;top:150px">专业选修</label>\
+		<input type="button" id="selectAll" value="全不选" style="position:absolute;left:1140px;top:100px;text-align:justify;"/>\
+		<style>\
+			input{\
+				font-size:12px;\
+				width:55px;\
+				height:20px;\
+				border-radius:4px;\
+				border:1px solid #c8cccf;\
+				color:#986655;\
+				outline:0;\
+				text-align:left;\
+				padding-left: 10px;\
+				display:block;\
+				cursor: pointer;\
+				box-shadow: 2px 2px 5px 1px #ccc;z-index: 1;\
+				}\
+			input::-webkit-input-placeholder{\
+				color:#986655;\
+				font-size: 12px;\
+			}\
+		</style>\
+	</form>');
+	var
+		form = $('.iconColor'),
+		orange = form.find('[name=color-input-orange]'),
+		selectall = form.find('#selectAll'),
+		submit = form.find('#orange-submit');
+	orange.click(function () {
+		if (orange.get().every(e=>e.checked)) {
+			selectall[0].value = '全不选';
+			selectall.css('width', '55px');
+		} else {
+			selectall[0].value = '全选';
+			selectall.css('width', '45px');
+		}
+	});
+	selectall.click(function () {
+		if (selectall[0].value === '全选') {
+			orange.prop('checked', true);
+			selectall[0].value = '全不选';
+			selectall.css('width', '55px');
+		} else if (selectall[0].value === '全不选') {
+			orange.prop('checked', false);
+			selectall[0].value = '全选';
+			selectall.css('width', '45px');
+		}
+	});
+	submit.click(function () {
+		var list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		orange.get().map(function (value, index) {
+			if (value.checked) {
+				list[index] = 1;
+			}
+		});
+		new Promise(function (resolve, reject) {
+			let GPA;
+			GPA = getGPA(list);
+			resolve(GPA);
+		}).then(function (GPA) {
+			let text = `GPA:` + GPA.toFixed(2);
+			showMessage(text, 7000, 8);
+		});
+		form.remove();
+	});
+}
+
+function beautifyIndex(url, opacity) {
 	//背景图片URL
 	url = 'url(' + url + ')';
 	//关闭二维码页面
@@ -120,7 +227,7 @@ $(function beautifyIndex(url, opacity) {
 	$('#btn3').css('z-index', '1');
 	$('#btn5').css('z-index', '1');
 	$('#btn9').css('z-index', '1');
-});
+}
 
 /*$(function beautifySubmit() {
 	$('#background-submit').click(function () {
@@ -234,14 +341,7 @@ function loadWidget(config) {
 				script.src = "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
 				document.head.appendChild(script);
 			}*/
-			new Promise(function (resolve, reject) {
-				let GPA;
-				GPA = getGPA();
-				resolve(GPA);
-			}).then(function (GPA) {
-				let text = `GPA:` + GPA.toFixed(2);
-				showMessage(text, 7000, 8);
-			});
+			getConfig();
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {

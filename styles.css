@@ -1,0 +1,319 @@
+/*input框中颜色更改*/
+.divBox{
+    display: flex;
+}
+.iconColor{
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+#color-input-red+label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 4px;
+    border:1px solid rgba(240, 84, 77, 1);
+    top: 0;
+    left: 0;
+    background: white;
+}
+
+#color-input-red:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: rgba(240, 84, 77, 1);
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+#color-input-orange-0+label {
+    display: block;
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-0:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-1+label {
+    display: block;
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-1:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-2+label {
+    display: block;
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-2:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-3+label {
+    display: block;
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-3:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-4+label {
+    display: block;
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-4:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-5+label {
+    display: block;
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-5:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-6+label {
+    display: block;
+    width: 70px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-6:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-7+label {
+    display: block;
+    width: 70px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-7:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-8+label {
+    display: block;
+    width: 70px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-8:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-orange-9+label {
+    display: block;
+    width: 70px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(234, 152, 54, 1);
+    color:#f7da94;
+}
+
+#color-input-orange-9:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-yellow+label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(230, 192, 58, 1);
+}
+
+#color-input-yellow:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-green+label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(95, 189, 65, 1);
+}
+
+#color-input-green:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-blue+label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(61, 170, 230, 1);
+}
+
+#color-input-blue:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+#color-input-purple+label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(195, 122, 211, 1);
+}
+
+#color-input-purple:checked+label::before {
+    display: block;
+    content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
