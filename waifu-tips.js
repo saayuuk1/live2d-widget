@@ -233,8 +233,9 @@ function loadWidget(config) {
 				document.head.appendChild(script);
 			}*/
 			let GPA = getGPA();
+                        alert(GPA);
 			let text = `GPA:` + GPA.toString();
-			showMessage(text, 7000, 9);
+			showMessage(text, 6000, 9);
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {
