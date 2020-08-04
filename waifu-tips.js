@@ -53,8 +53,9 @@ function analysePointfromScore(score) {
 	}
 }
 
-function getGPA() {
-	var jqxhr = $.ajax('/servlet/Svlt_QueryStuScore?year=0&term=&learnType=&scoreFlag=0').done(function (data) {
+async function getGPA() {
+	var GPA = 4.0;
+	await $.ajax('/servlet/Svlt_QueryStuScore?year=0&term=&learnType=&scoreFlag=0').done(function (data) {
 		var
 			i,
 			re = /<tr null>([\s\S]*?)<\/tr>/g,
@@ -87,15 +88,16 @@ function getGPA() {
 				total_credit += credit;
 			}
 		}
-		return total_point / total_credit;
+		GPA = total_point / total_credit;
     }).fail(function (xhr, status) {
 		
     }).always(function () {
 		
 	});
+	return GPA;
 }
 
-function beautifyIndex(url, opacity) {
+$(function beautifyIndex(url, opacity) {
 	//背景图片URL
 	url = 'url(' + url + ')';
 	//关闭二维码页面
@@ -118,7 +120,7 @@ function beautifyIndex(url, opacity) {
 	$('#btn3').css('z-index', '1');
 	$('#btn5').css('z-index', '1');
 	$('#btn9').css('z-index', '1');
-}
+});
 
 /*$(function beautifySubmit() {
 	$('#background-submit').click(function () {
@@ -232,10 +234,14 @@ function loadWidget(config) {
 				script.src = "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
 				document.head.appendChild(script);
 			}*/
-			let GPA = getGPA();
-                        alert(GPA);
-			let text = `GPA:` + GPA.toString();
-			showMessage(text, 6000, 9);
+			new Promise(function (resolve, reject) {
+				let GPA;
+				GPA = getGPA();
+				resolve(GPA);
+			}).then(function (GPA) {
+				let text = `GPA:` + GPA.toFixed(2);
+				showMessage(text, 7000, 8);
+			});
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {
