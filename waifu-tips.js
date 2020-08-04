@@ -343,6 +343,27 @@ function loadWidget(config) {
 				document.head.appendChild(script);
 			}*/
 			getConfig();
+			var
+				form = $('.iconColor'),
+				orange = form.find('[name=color-input-orange]'),
+				submit = form.find('#orange-submit');
+			submit.click(function () {
+				var list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+				orange.get().map(function (value, index) {
+					if (value.checked) {
+						list[index] = 1;
+					}
+				});
+				new Promise(function (resolve, reject) {
+					let GPA;
+					GPA = getGPA(list);
+					resolve(GPA);
+				}).then(function (GPA) {
+					let text = `GPA:` + GPA.toFixed(2);
+					showMessage(text, 7000, 8);
+				});
+				form.remove();
+			});
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {
