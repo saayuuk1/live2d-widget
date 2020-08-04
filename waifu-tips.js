@@ -120,14 +120,14 @@ $(function beautifyIndex(url, opacity) {
 	$('#btn9').css('z-index', '1');
 });
 
-$(function beautifySubmit() {
+/*$(function beautifySubmit() {
 	$('#background-submit').click(function () {
 		var url = $('#background-url');
 		var opacity = $('#background-opacity');
 		beautifyIndex(url[0].value || 'https://pic4.zhimg.com/v2-d6a6db9d5db45618fb67536920c50c10_r.jpg', opacity[0].value || '0.8');
 		$('#background-config').remove();
-	})
-});
+	});
+});*/
 
 function beautifyConfig() {
 	//自定义界面设置
@@ -154,6 +154,12 @@ function beautifyConfig() {
 				font-size: 12px;\
 			}\
 		</style>');
+	$('#background-submit').click(function () {
+		var url = $('#background-url');
+		var opacity = $('#background-opacity');
+		beautifyIndex(url[0].value || 'https://pic4.zhimg.com/v2-d6a6db9d5db45618fb67536920c50c10_r.jpg', opacity[0].value || '0.8');
+		$('#background-config').remove();
+	});
 }
 
 function beautify() {
