@@ -87,11 +87,11 @@ function getGPA() {
 				total_credit += credit;
 			}
 		}
-		alert(total_point / total_credit);
+		return total_point / total_credit;
     }).fail(function (xhr, status) {
-		alert(0);
+		
     }).always(function () {
-		alert(1);
+		
 	});
 }
 
@@ -232,7 +232,9 @@ function loadWidget(config) {
 				script.src = "https://cdn.jsdelivr.net/gh/stevenjoezhang/asteroids/asteroids.js";
 				document.head.appendChild(script);
 			}*/
-			getGPA();
+			let GPA = getGPA();
+			let text = `GPA:` + GPA.toString();
+			showMessage(text, 7000, 8);
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {
