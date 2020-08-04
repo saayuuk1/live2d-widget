@@ -95,7 +95,7 @@ function getGPA() {
 	});
 }
 
-$(function beautifyIndex(url, opacity) {
+function beautifyIndex(url, opacity) {
 	//背景图片URL
 	url = 'url(' + url + ')';
 	//关闭二维码页面
@@ -118,7 +118,7 @@ $(function beautifyIndex(url, opacity) {
 	$('#btn3').css('z-index', '1');
 	$('#btn5').css('z-index', '1');
 	$('#btn9').css('z-index', '1');
-});
+}
 
 /*$(function beautifySubmit() {
 	$('#background-submit').click(function () {
@@ -234,7 +234,7 @@ function loadWidget(config) {
 			}*/
 			let GPA = getGPA();
 			let text = `GPA:` + GPA.toString();
-			showMessage(text, 7000, 8);
+			showMessage(text, 7000, 9);
 		});
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", () => {
