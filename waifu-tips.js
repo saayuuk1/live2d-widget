@@ -186,23 +186,6 @@ function getConfig() {
 			selectall.css('width', '45px');
 		}
 	});
-	submit.click(function () {
-		var list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-		orange.get().map(function (value, index) {
-			if (value.checked) {
-				list[index] = 1;
-			}
-		});
-		new Promise(function (resolve, reject) {
-			let GPA;
-			GPA = getGPA(list);
-			resolve(GPA);
-		}).then(function (GPA) {
-			let text = `GPA:` + GPA.toFixed(2);
-			showMessage(text, 7000, 8);
-		});
-		form.remove();
-	});
 }
 
 function beautifyIndex(url, opacity) {
