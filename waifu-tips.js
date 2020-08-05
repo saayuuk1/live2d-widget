@@ -315,7 +315,9 @@ function loadWidget(config) {
 	}, 1000);
 
 	(function registerEventListener() {
-		document.querySelector("#waifu-tool .fa-comment").addEventListener("click", showHitokoto);
+		document.querySelector("#waifu-tool .fa-comment").addEventListener("click",  () => {
+			open('https://bkxk.whu.edu.cn/xtgl/login_slogin.html');
+		});
 		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {
 			/*if (window.Asteroids) {
 				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
@@ -408,7 +410,7 @@ function loadWidget(config) {
 		showMessage(text, 7000, 8);
 	})();
 
-	function showHitokoto() {
+	/*function showHitokoto() {
 		// 增加 hitokoto.cn 的 API
 		fetch("https://v1.hitokoto.cn")
 			.then(response => response.json())
@@ -419,7 +421,7 @@ function loadWidget(config) {
 					showMessage(text, 4000, 9);
 				}, 6000);
 			});
-	}
+	}*/
 
 	function showMessage(text, timeout, priority) {
 		if (!text || (sessionStorage.getItem("waifu-text") && sessionStorage.getItem("waifu-text") > priority)) return;
