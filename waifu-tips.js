@@ -106,7 +106,7 @@ async function getGPA(list) {
 }
 
 function getConfig() {
-	$('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/saayuuk1/live2d-widget@0.9.2/styles.css">');
+	$('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/saayuuk1/live2d-widget@0.9.9/styles.css">');
 	$('#top').append('<form class="iconColor">\
 		<input id="color-input-orange-0" class="chat-button-location-radio-input" type="checkbox" name="color-input-orange"\
 			value="#ea9836" checked="true"/>\
