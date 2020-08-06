@@ -1,6 +1,6 @@
 /*
  * Live2D Widget
- * https://github.com/stevenjoezhang/live2d-widget
+ * https://github.com/saayuuk1/live2d-widget
  */
 
 /*function getScore() {
@@ -250,7 +250,7 @@ function beautifyConfig() {
 	$('#background-submit').click(function () {
 		var url = $('#background-url');
 		var opacity = $('#background-opacity');
-		beautifyIndex(url[0].value || 'https://pic4.zhimg.com/v2-d6a6db9d5db45618fb67536920c50c10_r.jpg', opacity[0].value || '0.8');
+		beautifyIndex(url[0].value || 'https://cdn.jsdelivr.net/gh/spirit1431007/cdn@1.6/img/sakura.png', opacity[0].value || '0.7');
 		$('#background-config').remove();
 	});
 }
